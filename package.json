@@ -4,13 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "node src/app.js",
+    "test": "jest --reporters=default --reporters=jest-junit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "jest-junit": {
+    "outputDirectory": "test-results",
+    "outputName": "results.xml"
+  },
   "devDependencies": {
-    "jest": "^30.5.2"
+    "jest": "^30.5.2",
+    "jest-junit": "^17.0.0",
+    "selenium-webdriver": "^4.49.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
   }
 }

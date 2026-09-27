@@ -1,4 +1,5 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 
 describe('Home Page E2E Test', () => {
   let driver;
@@ -6,10 +7,16 @@ describe('Home Page E2E Test', () => {
   jest.setTimeout(30000);
 
   beforeAll(async () => {
-    const seleniumUrl = process.env.SELENIUM_REMOTE_URL || 'http://localhost:4444/wd/hub';
+    const seleniumUrl = process.env.SELENIUM_REMOTE_URL || 'http://selenium:4444/wd/hub';
+
+    const options = new chrome.Options();
+    options.addArguments('--no-sandbox');
+    options.addArguments('--disable-dev-shm-usage');
+    options.addArguments('--window-size=1280,800');
 
     driver = await new Builder()
       .forBrowser('chrome')
+      .setChromeOptions(options)
       .usingServer(seleniumUrl)
       .build();
   });
@@ -21,7 +28,7 @@ describe('Home Page E2E Test', () => {
   });
 
   it('should display Welcome to CI/CD', async () => {
-    const appUrl = process.env.APP_URL || 'http://host.docker.internal:3000';
+    const appUrl = process.env.APP_URL || 'http://jenkins:3000';
 
     await driver.get(appUrl);
 

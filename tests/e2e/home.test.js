@@ -27,7 +27,7 @@ describe('Home Page E2E Test', () => {
     }
   });
 
-  it('should display Welcome to CI/CD', async () => {
+  it('should display Hello DevOps', async () => {
     const appUrl = process.env.APP_URL || 'http://jenkins:3000';
 
     await driver.get(appUrl);
@@ -38,6 +38,6 @@ describe('Home Page E2E Test', () => {
     );
 
     const text = await header.getText();
-    expect(text).toBe('Welcome to CI/CD');
+    expect(text).toBe('Hello DevOps');
   });
 });

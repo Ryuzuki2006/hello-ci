@@ -1,8 +1,8 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:20-slim'
-        }
+    agent any
+
+    tools {
+        nodejs 'node20'
     }
 
     triggers {

@@ -7,13 +7,10 @@ pipeline {
     }
 
     // Environment block for remote Selenium connection
-    environment {
-        SELENIUM_HOST = 'selenium'
-        SELENIUM_PORT = '4444'
-        SELENIUM_REMOTE_URL = "http://${SELENIUM_HOST}:${SELENIUM_PORT}/wd/hub"
-        JEST_JUNIT_OUTPUT_DIR = 'test-results'
-        JEST_JUNIT_OUTPUT_NAME = 'results.xml'
-    }
+   environment {
+    SELENIUM_REMOTE_URL = 'http://selenium:4444/wd/hub'
+    APP_URL = 'http://jenkins:3000'
+}
 
     stages {
         stage('Install Dependencies') {
